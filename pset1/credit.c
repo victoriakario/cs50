@@ -32,7 +32,12 @@ int main(void)
         
         // Take the second to last number and multiply it by 2
         tempcc /= 10;
-        tempdiv += tempcc%10*2;
+        
+        // Grab the next number and add it straight to the tempdiv after multiplying by 2
+        tempdiv = tempcc%10*2;
+        
+        // Now remove that one
+        tempcc /= 10;
         
         // Check the doubled number and add the digits together if it is 10 and above
         if (tempdiv >= 10)
@@ -52,25 +57,31 @@ int main(void)
         }
         
     }
-    
+
+
     // Once the calculations are finished, check the card type.
-    
-    if (cardType/10 == 4)
+    if (sumcc % 10 == 0)
     {
-        cardCompany = "VISA\n";
-    }
-    else if (cardType == 34 || cardType ==37)
-    {
-        cardCompany = "AMEX\n";
-    }
-    else if (cardType >=50 && cardType <= 55)
-    {
-        cardCompany = "MASTERCARD\n";
-    }
-    else
-    {
+        if (cardType/10 == 4)
+        {
+            cardCompany = "VISA\n";
+        }
+        else if (cardType == 34 || cardType ==37)
+        {
+            cardCompany = "AMEX\n";
+        }
+        else if (cardType >=50 && cardType <= 55)
+        {
+            cardCompany = "MASTERCARD\n";
+        }
+        else
+        {
+            cardCompany = "INVALID\n";
+        }        
+    } else {
         cardCompany = "INVALID\n";
     }
+
     
     // Print the credit card answer.
     printf("%s",cardCompany);
